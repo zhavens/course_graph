@@ -1,0 +1,14 @@
+.sidebar {
+    background: #5BC0DE;
+    height: 100vh;
+    width: 200px;
+    padding: 20px;
+}
+
+.horiz-divider {
+    height: 1px;
+    width: 95%;
+    background-color: #A4A4A4;
+    margin: 10px auto 10px auto;
+
+}

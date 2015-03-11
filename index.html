@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"></link>
-</head>
+    <head>
+        <meta charset="UTF-8"> 
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"></link>
+        <link rel="stylesheet" href="css/index.css"></link>
+        <link rel="stylesheet" href="css/modal.css"></link>
+        <title>Graph-Based Course Selection</title>
+    </head>
 
-<body>
-	<h1 class="label-danger">TEST</h1>
-</body>
+    <body>
+        <div height="100%" width="120px" class="sidebar label-info">
+            <button class="btn btn-default" id='modal-open'>Open Modal</button>
+            <button class="btn btn-default" id='modal-test'>Test Modal</button>
+        </div>
+
+        <div id='modal-overlay'></div>
+        <div id='modal'>
+            <div id='modal-container'>
+                <div id='modal-header'>
+                    <a href='#' id='modal-close'>X</a>
+                    <div class='horiz-divider'></div>      
+                </div>
+                <div id='modal-body'></div>
+            </div>
+        </div>
+
+        <script src="bower_components/bootstap/dist/js/bootstrap.min.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/modal.js"></script>
+    </body>
+
+    
 </html>
