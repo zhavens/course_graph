@@ -159,3 +159,38 @@ h3 {
 .worksheet-menu .worksheet-menu-toggle:hover {
 	color: #FFFFFF;
 }
+
+.column-area {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	padding-right: 200px;
+	padding-left: 200px;
+}
+
+.column-area .column {
+	width: 25%;
+	height: 100%;
+	float: left;
+}
+
+.column-area .column .column-title {
+	text-align: center;
+	margin-top: 0px;
+}
+
+.column-area .column .course {
+	width: 40%;
+	height: 50px;
+	margin-left: 30%;
+	margin-bottom: 10px;
+	text-align: center;
+	border: solid;
+	border-radius: 100%;
+	border-width: 3px;
+	border-color: black;
+}
+
+.column-area .column .course .courseName {
+	margin-top: 11px;
+}

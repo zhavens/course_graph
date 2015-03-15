@@ -3,6 +3,8 @@ $(document).ready(function (){
 	$('.filter-menu').css('left', '0px');
 	$('.worksheet-menu').css('right', '0px');
 
+	buildColumns();
+
     $('.filter-menu-toggle').on('click', function(event){
         event.preventDefault();
         // create menu variables
@@ -53,7 +55,32 @@ $(document).ready(function (){
     });
 });
 
+function buildColumns() {
+
+	for(var i = 0; i < courses.length; i++) {
+		buildCourse(courses[i].courseName, courses[i].courseName.charAt(5))
+	}
+};
+
+function buildCourse(name, level) {
+	$('#' + level + '000level').append('<div class="course"><div class="courseName">' + name + '</div></div>');
+};
 
 function getData() {
     console.log(courses);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
