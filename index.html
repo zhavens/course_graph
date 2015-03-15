@@ -3,38 +3,116 @@
 <html>
     <head>
         <meta charset="UTF-8"> 
-
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"></link>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <link rel="stylesheet" href="css/index.css"></link>
         <link rel="stylesheet" href="css/modal.css"></link>
-
         <title>Graph-Based Course Selection</title>
     </head>
 
     <body>
-        <div height="100%" width="120px" class="sidebar label-info">
-            <button class="btn btn-default" id='modal-open'>Open Modal</button>
-            <button class="btn btn-default" id='modal-test'>Test Modal</button>
-            <button class="btn btn-default" id='data-test' onclick="getData()">Log Data</button>
+        <!-- Header -->
+        <div class="header">
+            <table style="width: 100%;">
+                <tr>
+                    <td class="filter-cell"><a href="#" class="filter-menu-toggle"><i class="fa fa-bars"></i> Add Filters</a></td>
+                    <td class="worksheet-cell"><a href="#" class="worksheet-menu-toggle">View Worksheet <i class="fa fa-calendar"></i></a></td>
+                </tr>
+            </table>
         </div>
 
-        <div id='modal-overlay'></div>
-        <div id='modal'>
-            <div id='modal-container'>
-                <div id='modal-header'>
-                    <a href='#' id='modal-close'>X</a>
-                    <div class='horiz-divider'></div>      
+        <!-- Filter Menu -->
+        <div class="filter-menu">
+            <h3>Filters<a href="#" class="filter-menu-toggle">X</a></h3>
+            <div class="filter-item">
+                <input class="search" type="search" results="5" placeholder="Enter Course ID"></input>
+            </div>
+            <div class="filter-section">
+                <span class="filter-header">Departments</span>
+                <div class="filter-levels">
+                    <span>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="BIOL"> BIOL</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="GEOG"> GEOG</label>
+                    </span><br>
+                    <span>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="COMP"> COMP</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="HIST"> HIST</label>
+                    </span><br>
+                    <span>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="DENT"> DENT</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="MATH"> MATH</label>
+                    </span><br>
+                    <span>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="ENVR"> ENVR</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="PSYC"> PSYC</label>
+                    </span>
                 </div>
-                <div id='modal-body'></div>
+            </div>
+            <div class="filter-section">
+                <span class="filter-header">Levels</span>
+                <div class="filter-levels">
+                    <span>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL1"> 1000</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL3"> 3000</label>
+                    </span><br>
+                    <span>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL2"> 2000</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL4"> 4000</label>
+                    </span>
+                </div>
+            </div>
+            <div class="filter-section">
+                <span class="filter-header">Terms</span>
+                <div class="filter-terms">
+                    <span>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="Fall"> Fall</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="Summer"> Summer</label>
+                    </span><br>
+                    <span>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="Winter"> Winter</label>
+                    </span>
+                </div>
+            </div>
+            <div class="filter-section">
+                <button class="btn btn-default filter-header" id="clear-filters">Clear All Filters</button>
             </div>
         </div>
 
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/bootstap/dist/js/bootstrap.min.js"></script>
+        <!-- Worksheet Menu -->
+        <div class="worksheet-menu">
+            <h3>Worksheet<a href="#" class="worksheet-menu-toggle">X</a></h3>
+            <div class="worksheet-section">
+                <span class="worksheet-header">Insert Calendar Here</span>
+            </div>
+            <div class="worksheet-section">
+                <span class="worksheet-header">Information</span><br>
+                <button class="btn btn-default worksheet-header" id="register">Register</button>
+            </div>
+        </div>
+
+        <!-- Modal Test Div -->
+        <div height="100%" width="120px" class="sidebar label-info">
+            <button class="btn btn-default" id="modal-open">Open Modal</button>
+            <button class="btn btn-default" id="modal-test">Test Modal</button>
+            <button class="btn btn-default" id='data-test' onclick="getData()">Log Data</button>
+        </div>
+
+        <div id="modal-overlay"></div>
+        <div id="modal">
+            <div id="modal-container">
+                <div id="modal-header">
+                    <a href="#" id="modal-close">X</a>
+                    <div class="horiz-divider"></div>
+                </div>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+        <!-- SCRIPTS -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="js/data/courseData.json"></script>
         <script src="js/index.js"></script>
         <script src="js/modal.js"></script>
     </body>
-
-    
 </html>
