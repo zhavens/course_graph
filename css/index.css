@@ -1,14 +1,161 @@
 .sidebar {
     background: #5BC0DE;
     height: 100vh;
-    width: 200px;
     padding: 20px;
+    position: fixed;
+    width: 200px;
 }
 
 .horiz-divider {
-    height: 1px;
-    width: 95%;
     background-color: #A4A4A4;
+    height: 1px;
     margin: 10px auto 10px auto;
+    width: 95%;
+}
 
+/* Header */
+.header {
+	background: #5BC0DE;
+	padding: 15px;
+}
+
+.header .filter-cell {
+	text-align: left;
+}
+
+.header .worksheet-cell {
+	text-align: right;
+}
+
+.header .filter-menu-toggle {
+	color: #000000;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.header .filter-menu-toggle:hover {
+	color: #FFFFFF;
+}
+
+.header .worksheet-menu-toggle {
+	color: #000000;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.header .worksheet-menu-toggle:hover {
+	color: #FFFFFF;
+}
+
+.header .filter-menu-toggle i {
+	margin: 5px 3px 0px 0px;
+	vertical-align: center;
+}
+
+/* Filter Menu */
+.filter-checkbox {
+	width: 85px;
+}
+
+.filter-menu {
+	background: #5BC0DE;
+	height: 100%;
+	left: -200px;
+	position: fixed;
+	top: 0;
+	width: 200px;
+	z-index: 100;
+}
+
+h3 {
+	position: relative;
+	padding: 12px 10px;
+	color: #000000;
+	font-size: 1.2em;
+	font-weight: bold;
+	border-bottom: 4px solid #222;
+}
+
+.filter-menu .filter-item {
+	padding: 5px 0px 5px 10px;
+}
+
+.filter-menu .filter-section {
+	border-top: 2px solid #999999;
+	padding: 5px 0px 5px 10px;
+}
+
+.filter-menu .filter-section .filter-header {
+	font-weight: bold;
+}
+
+.filter-menu .filter-item .search {
+	width: 150px;
+	font-weight: bold;
+}
+
+.filter-menu .filter-menu-toggle {
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	display: inline-block;
+	padding: 6px 9px 5px;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	line-height: 1;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: top;
+}
+
+.filter-menu .filter-menu-toggle:hover {
+	color: #FFFFFF;
+}
+
+/* Worksheet Menu */
+.worksheet-checkbox {
+	width: 85px;
+}
+
+.worksheet-menu {
+	background: #5BC0DE;
+	height: 100%;
+	right: -600px;
+	position: fixed;
+	top: 0;
+	width: 400px;
+	z-index: 100;
+}
+
+.worksheet-menu .worksheet-item {
+	padding: 5px 0px 5px 10px;
+}
+
+.worksheet-menu .worksheet-section {
+	border-top: 2px solid #999999;
+	padding: 5px 0px 5px 10px;
+}
+
+.worksheet-menu .worksheet-section .worksheet-header {
+	font-weight: bold;
+}
+
+.worksheet-menu .worksheet-menu-toggle {
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	display: inline-block;
+	padding: 6px 9px 5px;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	line-height: 1;
+	color: #000000;
+	text-decoration: none;
+	vertical-align: top;
+}
+
+.worksheet-menu .worksheet-menu-toggle:hover {
+	color: #FFFFFF;
 }
