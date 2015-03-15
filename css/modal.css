@@ -22,17 +22,23 @@
 
 .modalDialog > div {
 	width: 90%;
+	height:80%;
 	position: relative;
-	margin: 10% auto;
+	margin: 5%;
 	padding: 5px 20px 13px 20px;
 	border-radius: 10px;
 	background: #fff;
-	background: -moz-linear-gradient(#fff, #999);
-	background: -webkit-linear-gradient(#fff, #999);
-	background: -o-linear-gradient(#fff, #999);
+
 }
 
-
+#modalFooter{
+	position:absolute;
+   	bottom:0;
+   	width:97%;
+   	height:30%;   /* Height of the footer */
+   	background:#6cf;
+	border: 1px solid black;
+}
 
 .close {
 	background: #606061;
