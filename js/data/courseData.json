@@ -1,6 +1,6 @@
 
-var courseData = {
-	"courses":[{
+var courses = [
+		{
 			"courseName":"DEPC 1160",
 			"prerequisites":[],
 			"requiredBy":[
@@ -110,4 +110,4 @@ var courseData = {
 				{"requiredName":"DEPM 3960"}
 			]}
 	]
-}
+

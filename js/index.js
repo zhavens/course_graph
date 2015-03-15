@@ -1,6 +1,8 @@
-var courses;
 
 $(document).ready(function (){
+	$('.filter-menu').css('left', '0px');
+	$('.worksheet-menu').css('right', '0px');
+
     $('.filter-menu-toggle').on('click', function(event){
         event.preventDefault();
         // create menu variables
@@ -49,10 +51,6 @@ $(document).ready(function (){
             }, 600);
         }
     });
-});
-
-$(function() {
-    courses = courseData;
 });
 
 
