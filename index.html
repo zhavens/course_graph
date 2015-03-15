@@ -113,7 +113,29 @@
 			<div>
 				<a href="#close" title="Close" class="close">X</a>
 				 <div id="chart_div" style="padding: 50px"></div>
-				<div id="modalFooter"></div>
+				<div id="modalFooter">
+					<table style="width:100%">
+  					<tr>
+    				<td><h3>Course Info</h3></td>
+    				<td><h3>Sections Available</h3></td>
+  					</tr>
+  					<tr>
+    				<td valign="top" style="padding:10px" >This is where the information where the course will be located.<br>
+    				Credit Hours: 3 <br>
+    				Offered in fall and summer terms.</td>
+    				<td>
+    					<form action="">
+						<input type="radio" name="section" value="A01">MWF 8:30am<br>
+						<input type="radio" name="section" value="A02">MWF 1:30pm<br>
+						<input type="radio" name="section" value="A03">TR 10:00am<br>
+						<input type="radio" name="section" value="A04">TR 1:00pm<br>
+						</form>
+						
+					<button class="btn btn-default" id='addSection' onclick="addSection()" style="float:right">Add to Worksheet</button>	
+					</td>
+  					</tr>
+					</table> 
+				</div>
 			</div>
 		</div>
 

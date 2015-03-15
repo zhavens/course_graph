@@ -18,3 +18,7 @@
         var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
         chart.draw(data, {allowHtml:true});
       }
+
+      function addSection(){
+    	  alert("Course added to worksheet.");
+      }
