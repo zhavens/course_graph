@@ -3,11 +3,11 @@
 <html>
     <head>
         <meta charset="UTF-8"> 
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"></link>
         <link rel="stylesheet" href="css/index.css"></link>
         <link rel="stylesheet" href="css/modal.css"></link>
+
         <title>Graph-Based Course Selection</title>
     </head>
 
@@ -15,6 +15,7 @@
         <div height="100%" width="120px" class="sidebar label-info">
             <button class="btn btn-default" id='modal-open'>Open Modal</button>
             <button class="btn btn-default" id='modal-test'>Test Modal</button>
+            <button class="btn btn-default" id='data-test' onclick="getData()">Log Data</button>
         </div>
 
         <div id='modal-overlay'></div>
@@ -28,7 +29,9 @@
             </div>
         </div>
 
+        <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstap/dist/js/bootstrap.min.js"></script>
+        <script src="js/data/courseData.json"></script>
         <script src="js/index.js"></script>
         <script src="js/modal.js"></script>
     </body>
