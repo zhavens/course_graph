@@ -94,21 +94,24 @@
 
         <!-- Modal Test Div -->
         <div height="100%" width="120px" class="sidebar label-info">
-            <button class="btn btn-default" id="modal-open">Open Modal</button>
-            <button class="btn btn-default" id="modal-test">Test Modal</button>
+            <a href="#openModal">Open Modal</a>
             <button class="btn btn-default" id='data-test' onclick="getData()">Log Data</button>
         </div>
 
-        <div id="modal-overlay"></div>
-        <div id="modal">
-            <div id="modal-container">
-                <div id="modal-header">
-                    <a href="#" id="modal-close">X</a>
-                    <div class="horiz-divider"></div>
-                </div>
-                <div id="modal-body"></div>
-            </div>
-        </div>
+    
+
+
+		<div id="openModal" class="modalDialog">
+			<div>
+				<a href="#close" title="Close" class="close">X</a>
+				<h2>Modal Box</h2>
+				<p>This is a sample modal box that can be created using the powers of CSS3.</p>
+				<p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+			</div>
+		</div>
+
+    
+       
         <!-- SCRIPTS -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="js/data/courseData.json"></script>
