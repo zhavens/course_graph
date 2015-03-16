@@ -99,89 +99,94 @@
             <h3>Worksheet<a href="#" class="worksheet-menu-toggle">X</a></h3>
             <div class="worksheet-section">
                 <span class="worksheet-header">
-                    <table style="width:100%">
+                   	<table id = "worksheetTable" style="width:100%">
+                	<script>    
+                		var table = document.getElementById('worksheetTable');						
+      			 		table.style.display = 'block';
+      			 	</script>
                     <tr>
-                    <td></td>
-                    <td>Monday</td>
-                    <td>Tuesday</td>
-                    <td>Wednesday</td>
-                    <td>Thursday</td>
-                    <td>Friday</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black">Monday</td>
+                    <td style="border: 1px solid black">Tuesday</td>
+                    <td style="border: 1px solid black">Wednesday</td>
+                    <td style="border: 1px solid black">Thursday</td>
+                    <td style="border: 1px solid black">Friday</td>
                     </tr>
                     <tr>
-                    <td>8:30am</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="border: 1px solid black">8:30am</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
                     </tr>
                     <tr>
-                    <td>9:30am</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="border: 1px solid black">9:30am</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
                     </tr>
                     <tr>
-                    <td>10:30am</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="border: 1px solid black">10:30am</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
                     </tr>
                     <tr>
-                    <td>11:30am</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="border: 1px solid black">11:30am</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
                     </tr>
                     <tr>
-                    <td>12:30pm</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="border: 1px solid black">12:30pm</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
                     </tr>
                     <tr>
-                    <td>1:30pm</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="border: 1px solid black">1:30pm</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
                     </tr>
                     <tr>
-                    <td>2:30pm</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="border: 1px solid black">2:30pm</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
                     </tr>
                     <tr>
-                    <td>3:30pm</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="border: 1px solid black">3:30pm</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
                     </tr>
                     <tr>
-                    <td>4:30pm</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td style="border: 1px solid black">4:30pm</td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
+                    <td style="border: 1px solid black"></td>
                     </tr>
                     </table>
                 </span>
+                <a href="#" onclick="toggleDisplay('worksheetTable')">Show / Hide Calendar</a>
             </div>
             <div class="worksheet-section">
                 <span class="worksheet-header">Information</span>
