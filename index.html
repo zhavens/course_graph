@@ -41,26 +41,26 @@
             </div>
             <div class="filter-section">
                 <span class="filter-header">Departments</span>
-                <div class="filter-levels">
+                <div class="filter-departments">
                     <span>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="BIOL"> BIOL</label>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="ENVR"> ENVR</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="BIOL" onchange="checkDepartmentFilters(this.value)"> BIOL</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="ENVR" onchange="checkDepartmentFilters(this.value)"> ENVR</label>
                     </span><br>
                     <span>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="COMP"> COMP</label>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="GEOG"> GEOG</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="COMP" onchange="checkDepartmentFilters(this.value)"> COMP</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="GEOG" onchange="checkDepartmentFilters(this.value)"> GEOG</label>
                     </span><br>
                     <span>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="DENT"> DENT</label>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="HIST"> HIST</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="DENT" onchange="checkDepartmentFilters(this.value)"> DENT</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="HIST" onchange="checkDepartmentFilters(this.value)"> HIST</label>
                     </span><br>
                     <span>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="DEPC"> DEPC</label>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="MATH"> MATH</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="DEPC" onchange="checkDepartmentFilters(this.value)"> DEPC</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="MATH" onchange="checkDepartmentFilters(this.value)"> MATH</label>
                     </span>
                     <span>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="DEPM"> DEPM</label>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="PSYC"> PSYC</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="DEPM" onchange="checkDepartmentFilters(this.value)"> DEPM</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="PSYC" onchange="checkDepartmentFilters(this.value)"> PSYC</label>
                     </span>
                 </div>
             </div>
@@ -68,12 +68,12 @@
                 <span class="filter-header">Levels</span>
                 <div class="filter-levels">
                     <span>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL1"> 1000</label>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL3"> 3000</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL1" onchange="checkLevelFilters(this.value)"> 1000</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL3" onchange="checkLevelFilters(this.value)"> 3000</label>
                     </span><br>
                     <span>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL2"> 2000</label>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL4"> 4000</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL2" onchange="checkLevelFilters(this.value)"> 2000</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="CL4" onchange="checkLevelFilters(this.value)"> 4000</label>
                     </span>
                 </div>
             </div>
@@ -81,11 +81,11 @@
                 <span class="filter-header">Terms</span>
                 <div class="filter-terms">
                     <span>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="Fall"> Fall</label>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="Summer"> Summer</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="Fall" onchange="checkTermFilters(this.value)"> Fall</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="Summer" onchange="checkTermFilters(this.value)"> Summer</label>
                     </span><br>
                     <span>
-                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="Winter"> Winter</label>
+                        <label class="filter-checkbox"><input class="filterbox" type="checkbox" value="Winter" onchange="checkTermFilters(this.value)"> Winter</label>
                     </span>
                 </div>
             </div>
@@ -99,11 +99,11 @@
             <h3>Worksheet<a href="#" class="worksheet-menu-toggle">X</a></h3>
             <div class="worksheet-section">
                 <span class="worksheet-header">
-                   	<table id = "worksheetTable" style="width:100%">
-                	<script>    
-                		var table = document.getElementById('worksheetTable');						
-      			 		table.style.display = 'block';
-      			 	</script>
+                    <table id = "worksheetTable" style="width:100%">
+                    <script>    
+                        var table = document.getElementById('worksheetTable');                      
+                        table.style.display = 'block';
+                    </script>
                     <tr>
                     <td style="border: 1px solid black"></td>
                     <td style="border: 1px solid black">Monday</td>
@@ -221,7 +221,7 @@
                     </tr>
                 </table>
                 <br>
-                <button class="btn btn-default worksheet-header" id="register">Register</button>
+                <button class="btn btn-default worksheet-header" id="register" onclick="registerForCourse()">Register</button>
             </div>
         </div>
 
