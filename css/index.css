@@ -171,11 +171,11 @@ h3 {
 .column-area {
 	position: fixed;
 	height: 100%;
-	padding-left: 200px;
 	width: 100%;
 }
 
 .column-area .column {
+	background: #5BC0DE;
 	float: left;
 	height: 100%;
 	width: 25%;
