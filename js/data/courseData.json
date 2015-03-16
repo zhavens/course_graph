@@ -2,12 +2,14 @@
 var courses = [
 		{
 			"courseName":"DEPC 1160",
+			"taken":"true",
 			"prerequisites":[],
 			"requiredBy":[
 				{"requiredName":"DEPC 1170"}
 			]}, 
 		{
 			"courseName":"DEPC 1170",
+			"taken":"true",
 			"prerequisites":[
 				{"prerequisiteName":"DEPC 1160"}
 			],
@@ -19,6 +21,7 @@ var courses = [
 			]}, 
 		{
 			"courseName":"DEPC 2290",
+			"taken":"true",
 			"prerequisites":[
 				{"prerequisiteName":"DEPC 1170"}
 			],
@@ -41,6 +44,7 @@ var courses = [
 			]}, 
 		{
 			"courseName":"DEPC 2300",
+			"taken":"false",
 			"prerequisites":[
 				{"prerequisiteName":"DEPC 2290"},
 				{"prerequisiteName":"DEPC 2310"}
@@ -52,6 +56,7 @@ var courses = [
 			]}, 
 		{
 			"courseName":"DEPC 2310",
+			"taken":"false",
 			"prerequisites":[
 				{"prerequisiteName":"DEPC 1170"}
 			],
@@ -62,6 +67,7 @@ var courses = [
 			]}, 
 		{
 			"courseName":"DEPM 1450",
+			"taken":"true",
 			"prerequisites":[],
 			"requiredBy":[
 				{"requiredName":"DEPM 2352"},
@@ -76,6 +82,7 @@ var courses = [
 			]}, 
 		{
 			"courseName":"DEPM 1650",
+			"taken":"true",
 			"prerequisites":[],
 			"requiredBy":[
 				{"requiredName":"DEPM 1850"},
@@ -85,6 +92,7 @@ var courses = [
 			]}, 
 		{
 			"courseName":"DEPM 1850",
+			"taken":"false",
 			"prerequisites":[
 				{"prerequisiteName":"DEPM 1650"}
 			],
@@ -98,6 +106,7 @@ var courses = [
 			]}, 
 		{
 			"courseName":"DEPM 2900",
+			"taken":"false",
 			"prerequisites":[],
 			"requiredBy":[
 				{"requiredName":"DEPM 3280"},

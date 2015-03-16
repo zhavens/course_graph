@@ -53,6 +53,19 @@ $(document).ready(function (){
             }, 600);
         }
     });
+
+    $('.course').hover(function(e){
+        //mouse on
+        var courseData = getData(e.currentTarget.innerText);
+        
+        if(courseData.taken == 'false')
+            $(e.target).css('border-color', 'orange');
+        else
+            $(e.target).css('border-color', 'green');
+    }, function(e) {
+        //mouse off
+        $(e.target).css('border-color', 'black');
+    });
 });
 
 function buildColumns() {
@@ -63,11 +76,17 @@ function buildColumns() {
 };
 
 function buildCourse(name, level) {
-	$('#' + level + '000level').append('<div class="course"><div class="courseName">' + name + '</div></div>');
+	$('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName">' + name + '</div></div>');
 };
 
-function getData() {
-    console.log(courses);
+function getData(name) {
+    for(var i = 0; i < courses.length; i++) {
+        if(name.substring(0, 9) == courses[i].courseName) {
+            return courses[i];
+        }
+    }
+
+    return -1;
 };
 
 
