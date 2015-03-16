@@ -75,8 +75,12 @@ function buildColumns() {
 	}
 };
 
-function buildCourse(name, level) {
-	$('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName">' + name + '</div></div>');
+function buildCourse(name, level){
+    if(name == "COMP 2140"){
+        $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName"><a href="#openModal">' + name + '</a></div></div>');
+    }else{
+        $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName">' + name + '</div></div>');
+    }
 };
 
 function getData(name) {
