@@ -200,3 +200,13 @@ h3 {
 .column-area .column .course .courseName {
 	margin-top: 11px;
 }
+
+.column-area .column .course .courseName a {
+	color: #000000;
+}
+
+.column-area .column .course .courseName a:hover {
+	color: #000000;
+	font-weight: bold;
+	text-decoration: none;
+}
