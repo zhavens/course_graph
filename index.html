@@ -2,10 +2,11 @@
 
 <html>
     <head>
-        <meta charset="UTF-8"> 
+        <meta charset="UTF-8">
+
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="boower_components/jit/Jit/jit.js"></script>
+        <script src="bower_components/jit/Jit/jit.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -17,6 +18,7 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <link rel="stylesheet" href="css/index.css"></link>
         <link rel="stylesheet" href="css/modal.css"></link>
+
         <title>Graph-Based Course Selection</title>
     </head>
 
@@ -93,13 +95,44 @@
         </div>
 
         <!-- Worksheet Menu -->
-        <div class="worksheet-menu open">
+        <div class="worksheet-menu">
             <h3>Worksheet<a href="#" class="worksheet-menu-toggle">X</a></h3>
             <div class="worksheet-section">
                 <span class="worksheet-header">Insert Calendar Here</span>
             </div>
             <div class="worksheet-section">
-                <span class="worksheet-header">Information</span><br>
+                <span class="worksheet-header">Information</span>
+                <table>
+                    <tr>
+                        <td class="info-text">Course ID:</td>
+                        <td class="info-value"><span class="course-id">COMP2140</span></td>
+                    </tr>
+                    <tr>
+                        <td class="info-text">Course Name:</td>
+                        <td class="info-value"><span class="course-name">Data Structures and Algorithms</span></td>
+                    </tr>
+                    <tr>
+                        <td class="info-text">Course&nbsp Description:</td>
+                        <td class="info-value"><span class="course-description">Introduction to the representation and manipulation of data structures. Topics will include lists, stacks, queues, trees, and graphs.</span></td>
+                    </tr>
+                    <tr>
+                        <td class="info-text">Credit Hours:</td>
+                        <td class="info-value"><span class="course-credits">3</span></td>
+                    </tr>
+                    <tr>
+                        <td class="info-text">Lab Required:</td>
+                        <td class="info-value"><span class="course-lab">Yes</span></td>
+                    </tr>
+                    <tr>
+                        <td class="info-text">Prequisites:</td>
+                        <td class="info-value"><span class="course-prereqs">COMP1020</span></td>
+                    </tr>
+                    <tr>
+                        <td class="info-text">Required By:</td>
+                        <td class="info-value"><span class="course-reqby">COMP2080, COMP2150, COMP2280, COMP3020, COMP3170, COMP3290, COMP3380, COMP3430, COMP3440, COMP3490, COMP3620, COMP3720</span></td>
+                    </tr>
+                </table>
+                <br>
                 <button class="btn btn-default worksheet-header" id="register">Register</button>
             </div>
         </div>
@@ -126,42 +159,35 @@
             <button class="btn btn-default" id='data-test' onclick="getData()">Log Data</button>
         </div>
 
-    
-
-
 		<div id="openModal" class="modalDialog">
 			<div>
 				<a href="#close" title="Close" class="close">X</a>
-				 <div id="chart_div" style="padding: 50px"></div>
+				<div id="chart_div" style="padding: 50px"></div>
 				<div id="modalFooter">
 					<table style="width:100%">
-  					<tr>
-    				<td><h3>Course Info</h3></td>
-    				<td><h3>Sections Available</h3></td>
-  					</tr>
-  					<tr>
-    				<td valign="top" style="padding:10px" >This is where the information where the course will be located.<br>
-    				Credit Hours: 3 <br>
-    				Offered in fall and summer terms.</td>
-    				<td>
-    					<form action="">
-						<input type="radio" name="section" value="A01">MWF 8:30am<br>
-						<input type="radio" name="section" value="A02">MWF 1:30pm<br>
-						<input type="radio" name="section" value="A03">TR 10:00am<br>
-						<input type="radio" name="section" value="A04">TR 1:00pm<br>
-						</form>
-						
-					<button class="btn btn-default" id='addSection' onclick="addSection()" style="float:right">Add to Worksheet</button>	
-					</td>
-  					</tr>
+      					<tr>
+            				<td><h3>Course Info</h3></td>
+            				<td><h3>Sections Available</h3></td>
+      					</tr>
+      					<tr>
+            				<td valign="top" style="padding:10px" >
+                                This is where the information where the course will be located.<br>
+                				Credit Hours: 3 <br>
+                				Offered in fall and summer terms.
+                            </td>
+            				<td>
+            					<form action="">
+            						<input type="radio" name="section" value="A01">MWF 8:30am<br>
+            						<input type="radio" name="section" value="A02">MWF 1:30pm<br>
+            						<input type="radio" name="section" value="A03">TR 10:00am<br>
+            						<input type="radio" name="section" value="A04">TR 1:00pm<br>
+        						</form>
+        				        <button class="btn btn-default" id='addSection' onclick="addSection()" style="float:right">Add to Worksheet</button>	
+        					</td>
+      					</tr>
 					</table> 
 				</div>
 			</div>
 		</div>
-
-    
-       
-        <!-- SCRIPTS -->
-
     </body>
 </html>
