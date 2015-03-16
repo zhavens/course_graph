@@ -1,7 +1,7 @@
 
 $(document).ready(function (){
 	$('.filter-menu').css('left', '0px');
-	$('.worksheet-menu').css('right', '0px');
+	// $('.worksheet-menu').css('right', '0px');
 
 	buildColumns();
 
@@ -50,37 +50,22 @@ $(document).ready(function (){
         }else{
             worksheetMenu.animate({
                 right: -worksheetMenuWidth
-            }, 600);
+            }, 400);
         }
     });
 });
 
 function buildColumns() {
 
-	for(var i = 0; i < courses.length; i++) {
-		buildCourse(courses[i].courseName, courses[i].courseName.charAt(5))
+	for(var i=0; i<courses.length; i++){
+		buildCourse(courses[i].courseName, courses[i].courseName.charAt(5));
 	}
 };
 
-function buildCourse(name, level) {
+function buildCourse(name, level){
 	$('#' + level + '000level').append('<div class="course"><div class="courseName">' + name + '</div></div>');
 };
 
-function getData() {
+function getData(){
     console.log(courses);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
