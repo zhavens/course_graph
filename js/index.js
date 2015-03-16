@@ -63,18 +63,7 @@ $(document).ready(function (){
         }
     });
 
-    $('.course').hover(function(e){
-        //mouse on
-        var courseData = getData(e.currentTarget.innerText);
-        
-        if(courseData.taken == 'false')
-            $(e.target).css('border-color', 'orange');
-        else
-            $(e.target).css('border-color', 'green');
-    }, function(e) {
-        //mouse off
-        $(e.target).css('border-color', 'black');
-    });
+    addColorEffects();
 });
 
 function checkDepartmentFilters(value){
@@ -292,6 +281,22 @@ function buildCourse(name, level){
             }
         }
     }
+    addColorEffects();
+}
+
+function addColorEffects(){
+    $('.course').hover(function(e){
+        //mouse on
+        var courseData = getData(e.currentTarget.innerText);
+        
+        if(courseData.taken == 'false')
+            $(e.target).css('border-color', 'orange');
+        else
+            $(e.target).css('border-color', 'green');
+    }, function(e) {
+        //mouse off
+        $(e.target).css('border-color', 'black');
+    });
 }
 
 function getData(name){
