@@ -1,9 +1,8 @@
-
 $(document).ready(function (){
-	$('.filter-menu').css('left', '0px');
-	// $('.worksheet-menu').css('right', '0px');
+    $('.filter-menu').css('left', '0px');
+    // $('.worksheet-menu').css('right', '0px');
 
-	buildColumns();
+    buildColumns();
 
     $('.filter-menu-toggle').on('click', function(event){
         event.preventDefault();
@@ -29,6 +28,9 @@ $(document).ready(function (){
     $("#clear-filters").click(function(){
         $(".filterbox").each(function(){
             this.checked = false;
+        });
+        $(".search").each(function(){
+            this.value == "";
         });
     });
 
@@ -68,11 +70,11 @@ $(document).ready(function (){
     });
 });
 
-function buildColumns() {
+function buildColumns(){
 
-	for(var i=0; i<courses.length; i++){
-		buildCourse(courses[i].courseName, courses[i].courseName.charAt(5));
-	}
+    for(var i=0; i<courses.length; i++){
+        buildCourse(courses[i].courseName, courses[i].courseName.charAt(5));
+    }
 };
 
 function buildCourse(name, level){
@@ -84,19 +86,10 @@ function buildCourse(name, level){
 };
 
 function getData(name) {
-    for(var i = 0; i < courses.length; i++) {
-        if(name.substring(0, 9) == courses[i].courseName) {
+    for(var i = 0; i < courses.length; i++){
+        if(name.substring(0, 9) == courses[i].courseName){
             return courses[i];
         }
     }
-
     return -1;
 };
-
-function toggleDisplay(id) {
-    var e = document.getElementById(id);
-    if(e.style.display == 'block')
-       e.style.display = 'none';
-    else
-       e.style.display = 'block';
- }
