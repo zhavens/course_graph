@@ -1,122 +1,159 @@
-
 var courses = [
-		{
-			"courseName":"DEPC 1160",
-			"taken":"true",
-			"prerequisites":[],
-			"requiredBy":[
-				{"requiredName":"DEPC 1170"}
-			]}, 
-		{
-			"courseName":"DEPC 1170",
-			"taken":"true",
-			"prerequisites":[
-				{"prerequisiteName":"DEPC 1160"}
-			],
-			"requiredBy":[
-				{"requiredName":"DEPC 2280"},
-				{"requiredName":"DEPC 2290"},
-				{"requiredName":"DEPC 2310"},
-				{"requiredName":"DEPC 2340"}
-			]}, 
-		{
-			"courseName":"DEPC 2290",
-			"taken":"true",
-			"prerequisites":[
-				{"prerequisiteName":"DEPC 1170"}
-			],
-			"requiredBy":[
-				{"requiredName":"DEPC 2230"},
-				{"requiredName":"DEPC 2300"},
-				{"requiredName":"DEPC 2430"},
-				{"requiredName":"DEPC 3160"},
-				{"requiredName":"DEPC 3170"},
-				{"requiredName":"DEPC 3180"},
-				{"requiredName":"DEPC 3320"},
-				{"requiredName":"DEPC 3340"},
-				{"requiredName":"DEPC 3440"},
-				{"requiredName":"DEPC 3530"},
-				{"requiredName":"DEPC 3580"},
-				{"requiredName":"DEPC 3590"},
-				{"requiredName":"DEPC 3770"},
-				{"requiredName":"DEPC 3870"},
-				{"requiredName":"DEPC 4680"}
-			]}, 
-		{
-			"courseName":"DEPC 2300",
-			"taken":"false",
-			"prerequisites":[
-				{"prerequisiteName":"DEPC 2290"},
-				{"prerequisiteName":"DEPC 2310"}
-			],
-			"requiredBy":[
-				{"requiredName":"DEPC 3160"},
-				{"requiredName":"DEPC 3500"},
-				{"requiredName":"DEPC 4440"}
-			]}, 
-		{
-			"courseName":"DEPC 2310",
-			"taken":"false",
-			"prerequisites":[
-				{"prerequisiteName":"DEPC 1170"}
-			],
-			"requiredBy":[
-				{"requiredName":"DEPC 2300"},
-				{"requiredName":"DEPC 2430"},
-				{"requiredName":"DEPC 4580"}
-			]}, 
-		{
-			"courseName":"DEPM 1450",
-			"taken":"true",
-			"prerequisites":[],
-			"requiredBy":[
-				{"requiredName":"DEPM 2352"},
-				{"requiredName":"DEPM 2450"},
-				{"requiredName":"DEPM 2502"},
-				{"requiredName":"DEPM 2550"},
-				{"requiredName":"DEPM 2702"},
-				{"requiredName":"DEPM 2750"},
-				{"requiredName":"DEPM 2870"},
-				{"requiredName":"DEPM 2900"},
-				{"requiredName":"DEPM 2950"}
-			]}, 
-		{
-			"courseName":"DEPM 1650",
-			"taken":"true",
-			"prerequisites":[],
-			"requiredBy":[
-				{"requiredName":"DEPM 1850"},
-				{"requiredName":"DEPM 1860"},
-				{"requiredName":"DEPM 2450"},
-				{"requiredName":"DEPM 2702"}
-			]}, 
-		{
-			"courseName":"DEPM 1850",
-			"taken":"false",
-			"prerequisites":[
-				{"prerequisiteName":"DEPM 1650"}
-			],
-			"requiredBy":[
-				{"requiredName":"DEPM 2352"},
-				{"requiredName":"DEPM 2502"},
-				{"requiredName":"DEPM 2750"},
-				{"requiredName":"DEPM 2870"},
-				{"requiredName":"DEPM 2880"},
-				{"requiredName":"DEPM 2900"}
-			]}, 
-		{
-			"courseName":"DEPM 2900",
-			"taken":"false",
-			"prerequisites":[],
-			"requiredBy":[
-				{"requiredName":"DEPM 3280"},
-				{"requiredName":"DEPM 3380"},
-				{"requiredName":"DEPM 3580"},
-				{"requiredName":"DEPM 3600"},
-				{"requiredName":"DEPM 3850"},
-				{"requiredName":"DEPM 3910"},
-				{"requiredName":"DEPM 3950"},
-				{"requiredName":"DEPM 3960"}
-			]}
+	{
+		"courseName":"COMP 1010",
+		"taken":"true",
+		"prerequisites":[],
+		"requiredBy":[
+			{"requiredName":"COMP 1020"}
+		]},
+	{
+		"courseName":"COMP 1020",
+		"taken":"true",
+		"prerequisites":[
+			{"prerequisiteName":"COMP 1010"}
+		],
+		"requiredBy":[
+			{"requiredName":"COMP 2130"},
+			{"requiredName":"COMP 2140"},
+			{"requiredName":"COMP 2160"},
+			{"requiredName":"COMP 2190"}
+		]},
+	{
+		"courseName":"COMP 2140",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"COMP 1020"}
+		],
+		"requiredBy":[
+			{"requiredName":"COMP 2080"},
+			{"requiredName":"COMP 2150"},
+			{"requiredName":"COMP 2280"},
+			{"requiredName":"COMP 3020"},
+			{"requiredName":"COMP 3170"},
+			{"requiredName":"COMP 3290"},
+			{"requiredName":"COMP 3380"},
+			{"requiredName":"COMP 3430"},
+			{"requiredName":"COMP 3440"},
+			{"requiredName":"COMP 3490"},
+			{"requiredName":"COMP 3620"},
+			{"requiredName":"COMP 3720"}
+		]},
+	{
+		"courseName":"DEPC 1160",
+		"taken":"true",
+		"prerequisites":[],
+		"requiredBy":[
+			{"requiredName":"DEPC 1170"}
+		]}, 
+	{
+		"courseName":"DEPC 1170",
+		"taken":"true",
+		"prerequisites":[
+			{"prerequisiteName":"DEPC 1160"}
+		],
+		"requiredBy":[
+			{"requiredName":"DEPC 2280"},
+			{"requiredName":"DEPC 2290"},
+			{"requiredName":"DEPC 2310"},
+			{"requiredName":"DEPC 2340"}
+		]}, 
+	{
+		"courseName":"DEPC 2290",
+		"taken":"true",
+		"prerequisites":[
+			{"prerequisiteName":"DEPC 1170"}
+		],
+		"requiredBy":[
+			{"requiredName":"DEPC 2230"},
+			{"requiredName":"DEPC 2300"},
+			{"requiredName":"DEPC 2430"},
+			{"requiredName":"DEPC 3160"},
+			{"requiredName":"DEPC 3170"},
+			{"requiredName":"DEPC 3180"},
+			{"requiredName":"DEPC 3320"},
+			{"requiredName":"DEPC 3340"},
+			{"requiredName":"DEPC 3440"},
+			{"requiredName":"DEPC 3530"},
+			{"requiredName":"DEPC 3580"},
+			{"requiredName":"DEPC 3590"},
+			{"requiredName":"DEPC 3770"},
+			{"requiredName":"DEPC 3870"},
+			{"requiredName":"DEPC 4680"}
+		]}, 
+	{
+		"courseName":"DEPC 2300",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPC 2290"},
+			{"prerequisiteName":"DEPC 2310"}
+		],
+		"requiredBy":[
+			{"requiredName":"DEPC 3160"},
+			{"requiredName":"DEPC 3500"},
+			{"requiredName":"DEPC 4440"}
+		]}, 
+	{
+		"courseName":"DEPC 2310",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPC 1170"}
+		],
+		"requiredBy":[
+			{"requiredName":"DEPC 2300"},
+			{"requiredName":"DEPC 2430"},
+			{"requiredName":"DEPC 4580"}
+		]}, 
+	{
+		"courseName":"DEPM 1450",
+		"taken":"true",
+		"prerequisites":[],
+		"requiredBy":[
+			{"requiredName":"DEPM 2352"},
+			{"requiredName":"DEPM 2450"},
+			{"requiredName":"DEPM 2502"},
+			{"requiredName":"DEPM 2550"},
+			{"requiredName":"DEPM 2702"},
+			{"requiredName":"DEPM 2750"},
+			{"requiredName":"DEPM 2870"},
+			{"requiredName":"DEPM 2900"},
+			{"requiredName":"DEPM 2950"}
+		]}, 
+	{
+		"courseName":"DEPM 1650",
+		"taken":"true",
+		"prerequisites":[],
+		"requiredBy":[
+			{"requiredName":"DEPM 1850"},
+			{"requiredName":"DEPM 1860"},
+			{"requiredName":"DEPM 2450"},
+			{"requiredName":"DEPM 2702"}
+		]}, 
+	{
+		"courseName":"DEPM 1850",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPM 1650"}
+		],
+		"requiredBy":[
+			{"requiredName":"DEPM 2352"},
+			{"requiredName":"DEPM 2502"},
+			{"requiredName":"DEPM 2750"},
+			{"requiredName":"DEPM 2870"},
+			{"requiredName":"DEPM 2880"},
+			{"requiredName":"DEPM 2900"}
+		]}, 
+	{
+		"courseName":"DEPM 2900",
+		"taken":"false",
+		"prerequisites":[],
+		"requiredBy":[
+			{"requiredName":"DEPM 3280"},
+			{"requiredName":"DEPM 3380"},
+			{"requiredName":"DEPM 3580"},
+			{"requiredName":"DEPM 3600"},
+			{"requiredName":"DEPM 3850"},
+			{"requiredName":"DEPM 3910"},
+			{"requiredName":"DEPM 3950"},
+			{"requiredName":"DEPM 3960"}
+		]}
 	]
-
