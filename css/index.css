@@ -13,6 +13,15 @@
     width: 95%;
 }
 
+h3 {
+	position: relative;
+	padding: 12px 10px;
+	color: #000000;
+	font-size: 1.2em;
+	font-weight: bold;
+	border-bottom: 4px solid #222;
+}
+
 /* Header */
 .header {
 	background: #5BC0DE;
@@ -69,15 +78,6 @@
 	z-index: 100;
 }
 
-h3 {
-	position: relative;
-	padding: 12px 10px;
-	color: #000000;
-	font-size: 1.2em;
-	font-weight: bold;
-	border-bottom: 4px solid #222;
-}
-
 .filter-menu .filter-item {
 	padding: 5px 0px 5px 10px;
 }
@@ -92,21 +92,21 @@ h3 {
 }
 
 .filter-menu .filter-item .search {
-	width: 150px;
 	font-weight: bold;
+	width: 150px;
 }
 
 .filter-menu .filter-menu-toggle {
-	position: absolute;
-	top: 12px;
-	right: 10px;
+	color: #000000;
 	display: inline-block;
-	padding: 6px 9px 5px;
 	font-family: Arial, sans-serif;
 	font-weight: bold;
 	line-height: 1;
-	color: #000000;
+	padding: 6px 9px 5px;
+	position: absolute;
+	right: 10px;
 	text-decoration: none;
+	top: 12px;
 	vertical-align: top;
 }
 
@@ -115,22 +115,14 @@ h3 {
 }
 
 /* Worksheet Menu */
-.worksheet-checkbox {
-	width: 85px;
-}
-
 .worksheet-menu {
 	background: #5BC0DE;
 	height: 100%;
-	right: -600px;
 	position: fixed;
+	right: -400px;
 	top: 0;
-	width: 200px;
+	width: 400px;
 	z-index: 100;
-}
-
-.worksheet-menu .worksheet-item {
-	padding: 5px 0px 5px 10px;
 }
 
 .worksheet-menu .worksheet-section {
@@ -143,16 +135,16 @@ h3 {
 }
 
 .worksheet-menu .worksheet-menu-toggle {
-	position: absolute;
-	top: 12px;
-	right: 10px;
+	color: #000000;
 	display: inline-block;
-	padding: 6px 9px 5px;
 	font-family: Arial, sans-serif;
 	font-weight: bold;
 	line-height: 1;
-	color: #000000;
+	padding: 6px 9px 5px;
+	position: absolute;
+	right: 10px;
 	text-decoration: none;
+	top: 12px;
 	vertical-align: top;
 }
 
@@ -160,35 +152,50 @@ h3 {
 	color: #FFFFFF;
 }
 
+/* Information Details */
+.worksheet-menu .worksheet-section .info-text {
+	font-weight: bold;
+	padding: 10px 10px 0px 0px;
+	text-align: right;
+	vertical-align: top;
+	width: 110px;
+}
+
+.worksheet-menu .worksheet-section .info-value {
+	padding-top: 10px;
+	vertical-align: top;
+	width: 270px;
+}
+
+/* Course Levels */
 .column-area {
 	position: fixed;
-	width: 100%;
 	height: 100%;
-	padding-right: 200px;
 	padding-left: 200px;
+	width: 100%;
 }
 
 .column-area .column {
-	width: 25%;
-	height: 100%;
 	float: left;
+	height: 100%;
+	width: 25%;
 }
 
 .column-area .column .column-title {
-	text-align: center;
 	margin-top: 0px;
+	text-align: center;
 }
 
 .column-area .column .course {
+	border-radius: 100%;
+	border: solid;
+	border-width: 3px;
+	border-color: black;
 	width: 40%;
 	height: 50px;
 	margin-left: 30%;
 	margin-bottom: 10px;
 	text-align: center;
-	border: solid;
-	border-radius: 100%;
-	border-width: 3px;
-	border-color: black;
 }
 
 .column-area .column .course .courseName {
