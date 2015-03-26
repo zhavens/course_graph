@@ -206,6 +206,8 @@ function drawChart() {
             drawChart();
         }
     });
+
+    $('#chart_div').append('<div id="prerequisite_title">Prerequisites:</div><div id="selected_title">Current Selection:</div><div id="required_title">Required By:</div>');
 }
 
 function clearSelected() {

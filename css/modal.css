@@ -62,3 +62,27 @@
 .close:hover { background: #00d9ff; }
 
 
+#prerequisite_title {
+	font-weight: bold;
+	position: fixed;
+	float: left;
+	margin-top: -140px;
+	margin-left: 350px;
+}
+
+#selected_title {
+	font-weight: bold;
+	position: fixed;
+	float: left;
+	margin-top: -90px;
+	margin-left: 350px;
+}
+
+#required_title {
+	font-weight: bold;
+	position: fixed;
+	float: left;
+	margin-top: -40px;
+	margin-left: 350px;
+}
+
