@@ -67,7 +67,7 @@
 	position: fixed;
 	float: left;
 	margin-top: -140px;
-	margin-left: 350px;
+	margin-left: 10%;
 }
 
 #selected_title {
@@ -75,7 +75,7 @@
 	position: fixed;
 	float: left;
 	margin-top: -90px;
-	margin-left: 350px;
+	margin-left: 10%;
 }
 
 #required_title {
@@ -83,6 +83,6 @@
 	position: fixed;
 	float: left;
 	margin-top: -40px;
-	margin-left: 350px;
+	margin-left: 10%;
 }
 
