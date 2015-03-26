@@ -12,9 +12,9 @@ function drawChart() {
     for (var i = 0; i < courses.length; i++) {
         if (courses[i].clicked == "true") {
             selectedCourse = courses[i];
+            selectedCourseName = courses[i].courseName;
         }
     }
-    console.log(selectedCourse.courseName);
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Name');
     data.addColumn('string', 'Manager');
@@ -191,19 +191,25 @@ function drawChart() {
     });
 
     $('.google-visualization-orgchart-node-medium').on('click', function(e) {
-        console.log(e.currentTarget.innerText);
         var courseFound = false;
         clearSelected();
 
         for (var i = 0; i < courses.length; i++) {
             if (e.currentTarget.innerText.substring(0, 9) == courses[i].courseName) {
                 courses[i].clicked = "true";
+                selectedCourseName = courses[i].courseName;
                 courseFound = true;
             }
         }
 
         if(courseFound) {
             drawChart();
+        }
+    });
+
+    $('.google-visualization-orgchart-node').each(function(index, element) {
+        if(this.innerText.substring(0, 9) == selectedCourseName) {
+            $(this).addClass('google-visualization-orgchart-nodesel');
         }
     });
 
@@ -221,3 +227,5 @@ function clearSelected() {
 function addSection() {
     alert("Course added to worksheet.");
 }
+
+
