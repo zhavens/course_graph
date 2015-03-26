@@ -111,7 +111,8 @@ var courses = [
 			{"requiredName":"DEPM 2450"},
 			{"requiredName":"DEPM 2502"},
 			{"requiredName":"DEPM 2550"},
-			{"requiredName":"DEPM 2702"}
+			{"requiredName":"DEPM 2702"},
+			{"requiredName":"DEPM 2900"}
 		],
 		"clicked":"false"
 		}, 
@@ -138,14 +139,18 @@ var courses = [
 			{"requiredName":"DEPM 2502"},
 			{"requiredName":"DEPM 2750"},
 			{"requiredName":"DEPM 2870"},
-			{"requiredName":"DEPM 2880"}
+			{"requiredName":"DEPM 2880"},
+			{"requiredName":"DEPM 2900"}
 		],
 		"clicked":"false"
 		}, 
 	{
 		"courseName":"DEPM 2900",
 		"taken":"false",
-		"prerequisites":[],
+		"prerequisites":[
+			{"prerequisiteName":"DEPM 1450"},
+			{"prerequisiteName":"DEPM 1850"}
+		],
 		"requiredBy":[
 			{"requiredName":"DEPM 3280"},
 			{"requiredName":"DEPM 3380"},

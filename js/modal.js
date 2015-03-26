@@ -40,46 +40,15 @@ function drawChart() {
                 ['Nothing requires this course.', selectedCourse.courseName, '']
             ]);
 
-        } else if (requiredNodes.length == 1) {
+        } else {
             data.addRows([
                 [prereqNodes[0], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, '']
+                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here']
             ]);
-        } else if (requiredNodes.length == 2) {
-            data.addRows([
-                [prereqNodes[0], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, '']
-            ]);
-        } else if (requiredNodes.length == 3) {
-            data.addRows([
-                [prereqNodes[0], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, ''],
-                [requiredNodes[2], selectedCourse.courseName, '']
-            ]);
-        } else if (requiredNodes.length == 4) {
-            data.addRows([
-                [prereqNodes[0], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, ''],
-                [requiredNodes[2], selectedCourse.courseName, ''],
-                [requiredNodes[3], selectedCourse.courseName, '']
-            ]);
-        } else if (requiredNodes.length == 5) {
-            data.addRows([
-                [prereqNodes[0], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, ''],
-                [requiredNodes[2], selectedCourse.courseName, ''],
-                [requiredNodes[3], selectedCourse.courseName, ''],
-                [requiredNodes[4], selectedCourse.courseName, '']
-            ]);
+
+            for(var i = 0; i < requiredNodes.length; i++) {
+                data.addRow([requiredNodes[i], selectedCourse.courseName, '']);
+            }
         }
     } else if (prereqNodes.length == 0) {
         if (requiredNodes.length == 0) {
@@ -88,46 +57,15 @@ function drawChart() {
                 [selectedCourse.courseName, 'There are no prerequisites.', 'Full name goes here'],
                 ['Nothing requires this course.', selectedCourse.courseName, '']
             ]);
-        } else if (requiredNodes.length == 1) {
+        } else {
             data.addRows([
                 ['There are no prerequisites.', '', ''],
-                [selectedCourse.courseName, 'There are no prerequisites.', 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, '']
+                [selectedCourse.courseName, 'There are no prerequisites.', 'Full name goes here']
             ]);
-        } else if (requiredNodes.length == 2) {
-            data.addRows([
-                ['There are no prerequisites.', '', ''],
-                [selectedCourse.courseName, 'There are no prerequisites.', 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, '']
-            ]);
-        } else if (requiredNodes.length == 3) {
-            data.addRows([
-                ['There are no prerequisites.', '', ''],
-                [selectedCourse.courseName, 'There are no prerequisites.', 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, ''],
-                [requiredNodes[2], selectedCourse.courseName, '']
-            ]);
-        } else if (requiredNodes.length == 4) {
-            data.addRows([
-                ['There are no prerequisites.', '', ''],
-                [selectedCourse.courseName, 'There are no prerequisites.', 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, ''],
-                [requiredNodes[2], selectedCourse.courseName, ''],
-                [requiredNodes[3], selectedCourse.courseName, '']
-            ]);
-        } else if (requiredNodes.length == 5) {
-            data.addRows([
-                ['There are no prerequisites.', '', ''],
-                [selectedCourse.courseName, 'There are no prerequisites.', 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, ''],
-                [requiredNodes[2], selectedCourse.courseName, ''],
-                [requiredNodes[3], selectedCourse.courseName, ''],
-                [requiredNodes[4], selectedCourse.courseName, '']
-            ]);
+
+            for(var i = 0; i < requiredNodes.length; i++) {
+                data.addRow([requiredNodes[i], selectedCourse.courseName, '']);
+            }
         }
     } else if (prereqNodes.length == 2) {
         if (requiredNodes.length == 0) {
@@ -137,51 +75,16 @@ function drawChart() {
                 [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
                 ['Nothing requires this course.', selectedCourse.courseName, '']
             ]);
-        } else if (requiredNodes.length == 1) {
+        } else {
             data.addRows([
                 [prereqNodes[0], '', ''],
                 [prereqNodes[1], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, '']
+                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here']
             ]);
-        } else if (requiredNodes.length == 2) {
-            data.addRows([
-                [prereqNodes[0], '', ''],
-                [prereqNodes[1], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, '']
-            ]);
-        } else if (requiredNodes.length == 3) {
-            data.addRows([
-                [prereqNodes[0], '', ''],
-                [prereqNodes[1], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, ''],
-                [requiredNodes[2], selectedCourse.courseName, '']
-            ]);
-        } else if (requiredNodes.length == 4) {
-            data.addRows([
-                [prereqNodes[0], '', ''],
-                [prereqNodes[1], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, ''],
-                [requiredNodes[2], selectedCourse.courseName, ''],
-                [requiredNodes[3], selectedCourse.courseName, '']
-            ]);
-        } else if (requiredNodes.length == 5) {
-            data.addRows([
-                [prereqNodes[0], '', ''],
-                [prereqNodes[1], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                [requiredNodes[0], selectedCourse.courseName, ''],
-                [requiredNodes[1], selectedCourse.courseName, ''],
-                [requiredNodes[2], selectedCourse.courseName, ''],
-                [requiredNodes[3], selectedCourse.courseName, ''],
-                [requiredNodes[4], selectedCourse.courseName, '']
-            ]);
+
+            for(var i = 0; i < requiredNodes.length; i++) {
+                data.addRow([requiredNodes[i], selectedCourse.courseName, '']);
+            }
         }
     }
 
