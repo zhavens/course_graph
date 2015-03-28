@@ -38,6 +38,15 @@ var courses = [
 		"clicked":"false"
 		},
 	{
+		"courseName":"COMP 3440",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"COMP 2140"}
+		],
+		"requiredBy":[],
+		"clicked":"false"
+		},
+	{
 		"courseName":"DEPC 1160",
 		"taken":"true",
 		"prerequisites":[],
@@ -79,8 +88,7 @@ var courses = [
 		"courseName":"DEPC 2300",
 		"taken":"false",
 		"prerequisites":[
-			{"prerequisiteName":"DEPC 2290"},
-			{"prerequisiteName":"DEPC 2310"}
+			{"prerequisiteName":"DEPC 2290"}
 		],
 		"requiredBy":[
 			{"requiredName":"DEPC 3160"},
