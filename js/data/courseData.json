@@ -1,6 +1,7 @@
 var courses = [
 	{
 		"courseName":"COMP 1010",
+		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[],
 		"requiredBy":[
@@ -10,6 +11,7 @@ var courses = [
 		},
 	{
 		"courseName":"COMP 1020",
+		"courseTerm":"Winter",
 		"taken":"true",
 		"prerequisites":[
 			{"prerequisiteName":"COMP 1010"}
@@ -24,6 +26,7 @@ var courses = [
 		},
 	{
 		"courseName":"COMP 2140",
+		"courseTerm":"Fall",
 		"taken":"false",
 		"prerequisites":[
 			{"prerequisiteName":"COMP 1020"}
@@ -38,16 +41,8 @@ var courses = [
 		"clicked":"false"
 		},
 	{
-		"courseName":"COMP 3440",
-		"taken":"false",
-		"prerequisites":[
-			{"prerequisiteName":"COMP 2140"}
-		],
-		"requiredBy":[],
-		"clicked":"false"
-		},
-	{
 		"courseName":"DEPC 1160",
+		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[],
 		"requiredBy":[
@@ -57,6 +52,7 @@ var courses = [
 		}, 
 	{
 		"courseName":"DEPC 1170",
+		"courseTerm":"Winter",
 		"taken":"true",
 		"prerequisites":[
 			{"prerequisiteName":"DEPC 1160"}
@@ -71,6 +67,7 @@ var courses = [
 		}, 
 	{
 		"courseName":"DEPC 2290",
+		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[
 			{"prerequisiteName":"DEPC 1170"}
@@ -86,9 +83,11 @@ var courses = [
 		}, 
 	{
 		"courseName":"DEPC 2300",
+		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
-			{"prerequisiteName":"DEPC 2290"}
+			{"prerequisiteName":"DEPC 2290"},
+			{"prerequisiteName":"DEPC 2310"}
 		],
 		"requiredBy":[
 			{"requiredName":"DEPC 3160"},
@@ -99,6 +98,7 @@ var courses = [
 		}, 
 	{
 		"courseName":"DEPC 2310",
+		"courseTerm":"Fall",
 		"taken":"false",
 		"prerequisites":[
 			{"prerequisiteName":"DEPC 1170"}
@@ -112,6 +112,7 @@ var courses = [
 		}, 
 	{
 		"courseName":"DEPM 1450",
+		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[],
 		"requiredBy":[
@@ -126,6 +127,7 @@ var courses = [
 		}, 
 	{
 		"courseName":"DEPM 1650",
+		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[],
 		"requiredBy":[
@@ -138,6 +140,7 @@ var courses = [
 		}, 
 	{
 		"courseName":"DEPM 1850",
+		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
 			{"prerequisiteName":"DEPM 1650"}
@@ -154,6 +157,7 @@ var courses = [
 		}, 
 	{
 		"courseName":"DEPM 2900",
+		"courseTerm":"Summer",
 		"taken":"false",
 		"prerequisites":[
 			{"prerequisiteName":"DEPM 1450"},
