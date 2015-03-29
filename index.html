@@ -101,7 +101,7 @@
                 <span class="worksheet-header">
                     <table id = "worksheetTable" style="width:100%">
                     <script>    
-                        var table = document.getElementById('worksheetTable');                      
+                        var table = document.getElementById('worksheetTable');
                         table.style.display = 'block';
                     </script>
                     <tr>
@@ -190,35 +190,7 @@
             </div>
             <div class="worksheet-section">
                 <span class="worksheet-header">Information</span>
-                <table>
-                    <tr>
-                        <td class="info-text">Course ID:</td>
-                        <td class="info-value"><span class="course-id">COMP 2140</span></td>
-                    </tr>
-                    <tr>
-                        <td class="info-text">Course Name:</td>
-                        <td class="info-value"><span class="course-name">Data Structures and Algorithms</span></td>
-                    </tr>
-                    <tr>
-                        <td class="info-text">Course&nbsp Description:</td>
-                        <td class="info-value"><span class="course-description">Introduction to the representation and manipulation of data structures. Topics will include lists, stacks, queues, trees, and graphs.</span></td>
-                    </tr>
-                    <tr>
-                        <td class="info-text">Credit Hours:</td>
-                        <td class="info-value"><span class="course-credits">3</span></td>
-                    </tr>
-                    <tr>
-                        <td class="info-text">Lab Required:</td>
-                        <td class="info-value"><span class="course-lab">Yes</span></td>
-                    </tr>
-                    <tr>
-                        <td class="info-text">Prequisites:</td>
-                        <td class="info-value"><span class="course-prereqs">COMP 1020</span></td>
-                    </tr>
-                    <tr>
-                        <td class="info-text">Required By:</td>
-                        <td class="info-value"><span class="course-reqby">COMP 2080, COMP 2150, COMP 2280, COMP 3020, COMP 3170, COMP 3290, COMP 3380, COMP 3430, COMP 3440, COMP 3490, COMP 3620, COMP 3720</span></td>
-                    </tr>
+                <table class="selectedCourses">
                 </table>
                 <br>
                 <button class="btn btn-default worksheet-header" id="register" onclick="registerForCourse()">Register</button>
@@ -259,7 +231,7 @@
                                 Offered in fall and summer terms.
                             </td>
                             <td>
-                                <form action="">
+                                <form id="sectionForm" action="">
                                     <input type="radio" name="section" value="A01">MWF 8:30am<br>
                                     <input type="radio" name="section" value="A02">MWF 1:30pm<br>
                                     <input type="radio" name="section" value="A03">TR 10:00am<br>
