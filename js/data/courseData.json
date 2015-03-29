@@ -1,6 +1,7 @@
 var courses = [
 	{
-		"courseName":"COMP 1010",
+		"courseID":"COMP 1010",
+		"courseName":"Introductory Computer Science 1",
 		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[],
@@ -10,7 +11,8 @@ var courses = [
 		"clicked":"false"
 		},
 	{
-		"courseName":"COMP 1020",
+		"courseID":"COMP 1020",
+		"courseName":"Introductory Computer Science 2",
 		"courseTerm":"Winter",
 		"taken":"true",
 		"prerequisites":[
@@ -25,7 +27,8 @@ var courses = [
 		"clicked":"false"
 		},
 	{
-		"courseName":"COMP 2140",
+		"courseID":"COMP 2140",
+		"courseName":"Data Structures and Algorithms",
 		"courseTerm":"Fall",
 		"taken":"false",
 		"prerequisites":[
@@ -41,7 +44,8 @@ var courses = [
 		"clicked":"false"
 		},
 	{
-		"courseName":"DEPC 1160",
+		"courseID":"DEPC 1160",
+		"courseName":"Introductory DEPC 1",
 		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[],
@@ -51,7 +55,8 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPC 1170",
+		"courseID":"DEPC 1170",
+		"courseName":"Introductory DEPC 2",
 		"courseTerm":"Winter",
 		"taken":"true",
 		"prerequisites":[
@@ -66,7 +71,8 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPC 2290",
+		"courseID":"DEPC 2290",
+		"courseName":"Intermediate DEPC 1",
 		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[
@@ -77,17 +83,18 @@ var courses = [
 			{"requiredName":"DEPC 2300"},
 			{"requiredName":"DEPC 2430"},
 			{"requiredName":"DEPC 3160"},
-			{"requiredName":"DEPC 3590"}
+			{"requiredName":"DEPC 3170"}
 		],
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPC 2300",
+		"courseID":"DEPC 2300",
+		"courseName":"Intermediate DEPC 2",
 		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
 			{"prerequisiteName":"DEPC 2290"},
-			{"prerequisiteName":"DEPC 2310"},
+			{"prerequisiteName":"DEPC 2310"}
 		],
 		"requiredBy":[
 			{"requiredName":"DEPC 3160"},
@@ -97,7 +104,8 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPC 2310",
+		"courseID":"DEPC 2310",
+		"courseName":"DEPC Analysis",
 		"courseTerm":"Fall",
 		"taken":"false",
 		"prerequisites":[
@@ -111,7 +119,8 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPC 3500",
+		"courseID":"DEPC 3500",
+		"courseName":"Advanced DEPC",
 		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
@@ -125,7 +134,8 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPC 3590",
+		"courseID":"DEPC 3590",
+		"courseName":"Advanced DEPC Systems",
 		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
@@ -135,7 +145,8 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPC 4500",
+		"courseID":"DEPC 4500",
+		"courseName":"Expert DEPC",
 		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
@@ -145,7 +156,8 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPM 1450",
+		"courseID":"DEPM 1450",
+		"courseName":"DEPM Basics",
 		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[],
@@ -160,7 +172,8 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPM 1650",
+		"courseID":"DEPM 1650",
+		"courseName":"Introductory DEPM 1",
 		"courseTerm":"Fall",
 		"taken":"true",
 		"prerequisites":[],
@@ -173,14 +186,15 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPM 1850",
+		"courseID":"DEPM 1850",
+		"courseName":"Introductory DEPM 2",
 		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
 			{"prerequisiteName":"DEPM 1650"}
 		],
 		"requiredBy":[
-			{"requiredName":"DEPM 2350"},
+			{"requiredName":"DEPM 2352"},
 			{"requiredName":"DEPM 2502"},
 			{"requiredName":"DEPM 2750"},
 			{"requiredName":"DEPM 2870"},
@@ -190,7 +204,8 @@ var courses = [
 		"clicked":"false"
 		}, 
 	{
-		"courseName":"DEPM 2350",
+		"courseID":"DEPM 2350",
+		"courseName":"Intermediate DEPM Analysis",
 		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
@@ -207,7 +222,8 @@ var courses = [
 		"clicked":"false"
 		}, 	
 	{
-		"courseName":"DEPM 2502",
+		"courseID":"DEPM 2502",
+		"courseName":"Intermediate DEPM Systems",
 		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
@@ -223,7 +239,8 @@ var courses = [
 		"clicked":"false"
 		},
 	{
-		"courseName":"DEPM 2900",
+		"courseID":"DEPM 2900",
+		"courseName":"Intermediate DEPM 1",
 		"courseTerm":"Summer",
 		"taken":"false",
 		"prerequisites":[
@@ -238,9 +255,10 @@ var courses = [
 			{"requiredName":"DEPM 3850"}
 		],
 		"clicked":"false"
-		},
+		}, 
 	{
-		"courseName":"DEPM 3500",
+		"courseID":"DEPM 3500",
+		"courseName":"Advanced DEPM",
 		"courseTerm":"Summer",
 		"taken":"false",
 		"prerequisites":[
@@ -257,7 +275,8 @@ var courses = [
 		"clicked":"false"
 		},
 	{
-		"courseName":"DEPM 4400",
+		"courseID":"DEPM 4400",
+		"courseName":"Expert DEPM",
 		"courseTerm":"Winter",
 		"taken":"false",
 		"prerequisites":[
