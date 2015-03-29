@@ -456,7 +456,7 @@ function buildCourse(name, level, term, i) {
                 $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
             }
         }
-    } else if (departmentFiltersOn && !levelFiltersOn && !termFiltersOn) { // All filters are on
+    } else if (departmentFiltersOn && levelFiltersOn && termFiltersOn) { // All filters are on
         if (courseDepartment == "BIOL" && departmentFilters[0]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
