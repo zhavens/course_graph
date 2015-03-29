@@ -41,7 +41,6 @@ $(document).ready(function() {
         });
     });
 
-
     $('.worksheet-menu-toggle').on('click', function(event) {
         event.preventDefault();
         // create menu variables
@@ -60,6 +59,18 @@ $(document).ready(function() {
             worksheetMenu.animate({
                 right: -worksheetMenuWidth
             }, 400);
+        }
+    });
+
+    $('#sectionForm input').on('change', function() {
+        if($('input[name=section]:checked').val() == 'A01') {
+            selectedCourseSlot = "MWF 8:30am";
+        } else if($('input[name=section]:checked').val() == 'A02') {
+            selectedCourseSlot = "MWF 1:30pm";
+        } else if($('input[name=section]:checked').val() == 'A03') {
+            selectedCourseSlot = "TR 10:00am";
+        } else if($('input[name=section]:checked').val() == 'A04') {
+            selectedCourseSlot = "TR 1:00pm";
         }
     });
 
@@ -156,9 +167,9 @@ function addColorEffects() {
     });
 }
 
-function getData(name) {
+function getData(id) {
     for (var i = 0; i < courses.length; i++) {
-        if (name.substring(0, 9) == courses[i].courseName) {
+        if (id.substring(0, 9) == courses[i].courseID) {
             return courses[i];
         }
     }
@@ -185,616 +196,616 @@ function buildColumns() {
     $("#4000level").html('<h3 class="column-title">4000</h3>');
 
     for (var i = 0; i < courses.length; i++) {
-        buildCourse(courses[i].courseName, courses[i].courseName.charAt(5), courses[i].courseTerm, i);
+        buildCourse(courses[i].courseID, courses[i].courseID.charAt(5), courses[i].courseTerm, i);
     }
 }
 
 // WARNING! EVERYTHING BELOW IS UGLY AS SIN!
 
-function buildCourse(name, level, term, i) {
-    var courseDepartment = name.substring(0, 4);
+function buildCourse(id, level, term, i) {
+    var courseDepartment = id.substring(0, 4);
     var courseLevel = level + "000";
     var courseTerm = term;
 
     if (!departmentFiltersOn && !levelFiltersOn && !termFiltersOn) { // All filters are off
-        $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"" ><a href="#openModal">' + name + '</a></div></div>');
+        $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"" ><a href="#openModal">' + id + '</a></div></div>');
     } else if (departmentFiltersOn && !levelFiltersOn && !termFiltersOn) { // Only department filters are on
         if (courseDepartment == "BIOL" && departmentFilters[0]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseDepartment == "COMP" && departmentFilters[1]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseDepartment == "DENT" && departmentFilters[2]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseDepartment == "DEPC" && departmentFilters[3]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseDepartment == "DEPM" && departmentFilters[4]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseDepartment == "ENVR" && departmentFilters[5]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseDepartment == "GEOG" && departmentFilters[6]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseDepartment == "HIST" && departmentFilters[7]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseDepartment == "MATH" && departmentFilters[8]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseDepartment == "PSYC" && departmentFilters[9]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         }
     } else if (!departmentFiltersOn && levelFiltersOn && !termFiltersOn) { // Only level filters are on
         if (courseLevel == "1000" && levelFilters[0]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseLevel == "2000" && levelFilters[1]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseLevel == "3000" && levelFilters[2]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseLevel == "4000" && levelFilters[3]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         }
     } else if (!departmentFiltersOn && !levelFiltersOn && termFiltersOn) { // Only term filters are on
         if (courseTerm == "Fall" && termFilters[0]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseTerm == "Winter" && termFilters[1]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         } else if (courseTerm == "Summer" && termFilters[2]) {
-            $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+            $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
         }
     } else if (departmentFiltersOn && levelFiltersOn && !termFiltersOn) { // Department filters and level filters are on
         if (courseDepartment == "BIOL" && departmentFilters[0]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "COMP" && departmentFilters[1]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "DENT" && departmentFilters[2]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "DEPC" && departmentFilters[3]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "DEPM" && departmentFilters[4]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "ENVR" && departmentFilters[5]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "GEOG" && departmentFilters[6]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "HIST" && departmentFilters[7]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "MATH" && departmentFilters[8]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "PSYC" && departmentFilters[9]) {
             if (courseLevel == "1000" && levelFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "2000" && levelFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "3000" && levelFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseLevel == "4000" && levelFilters[3]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         }
     } else if (departmentFiltersOn && !levelFiltersOn && termFiltersOn) { // Department filters and term filters are on
         if (courseDepartment == "BIOL" && departmentFilters[0]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "COMP" && departmentFilters[1]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "DENT" && departmentFilters[2]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "DEPC" && departmentFilters[3]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "DEPM" && departmentFilters[4]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "ENVR" && departmentFilters[5]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "GEOG" && departmentFilters[6]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "HIST" && departmentFilters[7]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "MATH" && departmentFilters[8]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseDepartment == "PSYC" && departmentFilters[9]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         }
     } else if (!departmentFiltersOn && levelFiltersOn && termFiltersOn) { // Level filters and term filters are on
         if (courseLevel == "1000" && levelFilters[0]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseLevel == "2000" && levelFilters[1]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseLevel == "3000" && levelFilters[2]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         } else if (courseLevel == "4000" && levelFilters[3]) {
             if (courseTerm == "Fall" && termFilters[0]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Winter" && termFilters[1]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             } else if (courseTerm == "Summer" && termFilters[2]) {
-                $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
             }
         }
     } else if (departmentFiltersOn && levelFiltersOn && termFiltersOn) { // All filters are on
         if (courseDepartment == "BIOL" && departmentFilters[0]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         } else if (courseDepartment == "COMP" && departmentFilters[1]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         } else if (courseDepartment == "DENT" && departmentFilters[2]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         } else if (courseDepartment == "DEPC" && departmentFilters[3]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         } else if (courseDepartment == "DEPM" && departmentFilters[4]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         } else if (courseDepartment == "ENVR" && departmentFilters[5]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         } else if (courseDepartment == "GEOG" && departmentFilters[6]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         } else if (courseDepartment == "HIST" && departmentFilters[7]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         } else if (courseDepartment == "MATH" && departmentFilters[8]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         } else if (courseDepartment == "PSYC" && departmentFilters[9]) {
             if (courseLevel == "1000" && levelFilters[0]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "2000" && levelFilters[1]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "3000" && levelFilters[2]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             } else if (courseLevel == "4000" && levelFilters[3]) {
                 if (courseTerm == "Fall" && termFilters[0]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Winter" && termFilters[1]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 } else if (courseTerm == "Summer" && termFilters[2]) {
-                    $('#' + level + '000level').append('<div class="course" value="' + name + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + name + '</a></div></div>');
+                    $('#' + level + '000level').append('<div class="course" value="' + id + '"><div class="courseName" onclick ="clearClicks(); setClick(' + i + ')"><a href="#openModal">' + id + '</a></div></div>');
                 }
             }
         }
