@@ -252,13 +252,42 @@ var courses = [
 			{"requiredName":"DEPM 3380"},
 			{"requiredName":"DEPM 3580"},
 			{"requiredName":"DEPM 3600"},
-			{"requiredName":"DEPM 3850"}
+			{"requiredName":"DEPM 3910"}
 		],
 		"clicked":"false"
 		}, 
+		{
+		"courseID":"DEPM 3380",
+		"courseName":"Advanced DEPM 1",
+		"courseTerm":"Fall",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPM 2350"},
+			{"prerequisiteName":"DEPM 2900"}
+		],
+		"requiredBy":[
+			{"requiredName":"DEPM 3390"}
+		],
+		"clicked":"false"
+		},
+	{
+		"courseID":"DEPM 3390",
+		"courseName":"Advanced DEPM 2",
+		"courseTerm":"Winter",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPM 3380"},
+		],
+		"requiredBy":[
+			{"requiredName":"DEPM 4350"},
+			{"requiredName":"DEPM 4380"},
+			{"requiredName":"DEPM 4860"}
+		],
+		"clicked":"false"
+		},
 	{
 		"courseID":"DEPM 3500",
-		"courseName":"Advanced DEPM",
+		"courseName":"Advanced DEPM 3",
 		"courseTerm":"Summer",
 		"taken":"false",
 		"prerequisites":[
