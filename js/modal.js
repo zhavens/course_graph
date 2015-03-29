@@ -1,17 +1,20 @@
+var selectedCourseID = "Empty";
+var selectedCourseName = "";
+var selectedCourseSlot = "";
+
 google.load("visualization", "1", {
     packages: ["orgchart"]
 });
 google.setOnLoadCallback(drawChart);
 
 function drawChart() {
-
-    var selectedCourseName = "Empty";
     var selectedCourse = {};
     selectedCourse.prerequisites = "";
     selectedCourse.requiredBy = "";
     for (var i = 0; i < courses.length; i++) {
         if (courses[i].clicked == "true") {
             selectedCourse = courses[i];
+            selectedCourseID = courses[i].courseID;
             selectedCourseName = courses[i].courseName;
         }
     }
@@ -36,35 +39,35 @@ function drawChart() {
         if (requiredNodes.length == 0) {
             data.addRows([
                 [prereqNodes[0], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                ['Nothing requires this course.', selectedCourse.courseName, '']
+                [selectedCourse.courseID, prereqNodes[0], 'Full name goes here'],
+                ['Nothing requires this course.', selectedCourse.courseID, '']
             ]);
 
         } else {
             data.addRows([
                 [prereqNodes[0], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here']
+                [selectedCourse.courseID, prereqNodes[0], 'Full name goes here']
             ]);
 
             for(var i = 0; i < requiredNodes.length; i++) {
-                data.addRow([requiredNodes[i], selectedCourse.courseName, '']);
+                data.addRow([requiredNodes[i], selectedCourse.courseID, '']);
             }
         }
     } else if (prereqNodes.length == 0) {
         if (requiredNodes.length == 0) {
             data.addRows([
                 ['There are no prerequisites.', '', ''],
-                [selectedCourse.courseName, 'There are no prerequisites.', 'Full name goes here'],
-                ['Nothing requires this course.', selectedCourse.courseName, '']
+                [selectedCourse.courseID, 'There are no prerequisites.', 'Full name goes here'],
+                ['Nothing requires this course.', selectedCourse.courseID, '']
             ]);
         } else {
             data.addRows([
                 ['There are no prerequisites.', '', ''],
-                [selectedCourse.courseName, 'There are no prerequisites.', 'Full name goes here']
+                [selectedCourse.courseID, 'There are no prerequisites.', 'Full name goes here']
             ]);
 
             for(var i = 0; i < requiredNodes.length; i++) {
-                data.addRow([requiredNodes[i], selectedCourse.courseName, '']);
+                data.addRow([requiredNodes[i], selectedCourse.courseID, '']);
             }
         }
     } else if (prereqNodes.length == 2) {
@@ -72,18 +75,18 @@ function drawChart() {
             data.addRows([
                 [prereqNodes[0], '', ''],
                 [prereqNodes[1], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here'],
-                ['Nothing requires this course.', selectedCourse.courseName, '']
+                [selectedCourse.courseID, prereqNodes[0], 'Full name goes here'],
+                ['Nothing requires this course.', selectedCourse.courseID, '']
             ]);
         } else {
             data.addRows([
                 [prereqNodes[0], '', ''],
                 [prereqNodes[1], '', ''],
-                [selectedCourse.courseName, prereqNodes[0], 'Full name goes here']
+                [selectedCourse.courseID, prereqNodes[0], 'Full name goes here']
             ]);
 
             for(var i = 0; i < requiredNodes.length; i++) {
-                data.addRow([requiredNodes[i], selectedCourse.courseName, '']);
+                data.addRow([requiredNodes[i], selectedCourse.courseID, '']);
             }
         }
     }
@@ -98,8 +101,9 @@ function drawChart() {
         clearSelected();
 
         for (var i = 0; i < courses.length; i++) {
-            if (e.currentTarget.innerText.substring(0, 9) == courses[i].courseName) {
+            if (e.currentTarget.innerText.substring(0, 9) == courses[i].courseID) {
                 courses[i].clicked = "true";
+                selectedCourseID = courses[i].courseID;
                 selectedCourseName = courses[i].courseName;
                 courseFound = true;
             }
@@ -111,7 +115,7 @@ function drawChart() {
     });
 
     $('.google-visualization-orgchart-node').each(function(index, element) {
-        if(this.innerText.substring(0, 9) == selectedCourseName) {
+        if(this.innerText.substring(0, 9) == selectedCourseID) {
             $(this).addClass('google-visualization-orgchart-nodesel');
         }
     });
@@ -128,7 +132,10 @@ function clearSelected() {
 }
 
 function addSection() {
-    alert("Course added to worksheet.");
+    var courseID = selectedCourseID.replace(/\s+/g, "");
+
+    alert(selectedCourseID + " added to worksheet.");
+    $('.selectedCourses').append('<tr class="' + courseID + '"><td class="info-text">Course ID:</td><td class="info-value"><span class="course-id">' + selectedCourseID + '</span></td></tr>' +
+        '<tr class="' + courseID + '"><td class="info-text">Course Name:</td><td class="info-value"><span class="course-name">' + selectedCourseName + '</span></td></tr>' +
+        '<tr class="' + courseID + '"><td class="info-text">Time Slot:</td><td class="info-value"><span class="course-name">' + selectedCourseSlot + '</span></td></tr>');
 }
-
-
