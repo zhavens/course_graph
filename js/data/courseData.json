@@ -77,7 +77,7 @@ var courses = [
 			{"requiredName":"DEPC 2300"},
 			{"requiredName":"DEPC 2430"},
 			{"requiredName":"DEPC 3160"},
-			{"requiredName":"DEPC 3170"}
+			{"requiredName":"DEPC 3590"}
 		],
 		"clicked":"false"
 		}, 
@@ -87,7 +87,7 @@ var courses = [
 		"taken":"false",
 		"prerequisites":[
 			{"prerequisiteName":"DEPC 2290"},
-			{"prerequisiteName":"DEPC 2310"}
+			{"prerequisiteName":"DEPC 2310"},
 		],
 		"requiredBy":[
 			{"requiredName":"DEPC 3160"},
@@ -108,6 +108,40 @@ var courses = [
 			{"requiredName":"DEPC 2430"},
 			{"requiredName":"DEPC 4580"}
 		],
+		"clicked":"false"
+		}, 
+	{
+		"courseName":"DEPC 3500",
+		"courseTerm":"Winter",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPC 2300"},
+		],
+		"requiredBy":[
+			{"requiredName":"DEPC 4200"},
+			{"requiredName":"DEPC 4500"},
+			{"requiredName":"DEPC 4710"}
+		],
+		"clicked":"false"
+		}, 
+	{
+		"courseName":"DEPC 3590",
+		"courseTerm":"Winter",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPC 2290"},
+		],
+		"requiredBy":[],
+		"clicked":"false"
+		}, 
+	{
+		"courseName":"DEPC 4500",
+		"courseTerm":"Winter",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPC 3500"},
+		],
+		"requiredBy":[],
 		"clicked":"false"
 		}, 
 	{
@@ -146,7 +180,7 @@ var courses = [
 			{"prerequisiteName":"DEPM 1650"}
 		],
 		"requiredBy":[
-			{"requiredName":"DEPM 2352"},
+			{"requiredName":"DEPM 2350"},
 			{"requiredName":"DEPM 2502"},
 			{"requiredName":"DEPM 2750"},
 			{"requiredName":"DEPM 2870"},
@@ -155,6 +189,39 @@ var courses = [
 		],
 		"clicked":"false"
 		}, 
+	{
+		"courseName":"DEPM 2350",
+		"courseTerm":"Winter",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPM 1450"},
+			{"prerequisiteName":"DEPM 1650"}
+		],
+		"requiredBy":[
+			{"requiredName":"DEPM 2502"},
+			{"requiredName":"DEPM 3370"},
+			{"requiredName":"DEPM 3380"},
+			{"requiredName":"DEPM 3500"},
+			{"requiredName":"DEPM 3550"}
+		],
+		"clicked":"false"
+		}, 	
+	{
+		"courseName":"DEPM 2502",
+		"courseTerm":"Winter",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPM 1450"},
+			{"prerequisiteName":"DEPM 1850"}
+		],
+		"requiredBy":[
+			{"requiredName":"DEPM 3450"},
+			{"requiredName":"DEPM 3500"},
+			{"requiredName":"DEPM 3550"},
+			{"requiredName":"DEPM 3580"},
+		],
+		"clicked":"false"
+		},
 	{
 		"courseName":"DEPM 2900",
 		"courseTerm":"Summer",
@@ -170,6 +237,33 @@ var courses = [
 			{"requiredName":"DEPM 3600"},
 			{"requiredName":"DEPM 3850"}
 		],
+		"clicked":"false"
+		},
+	{
+		"courseName":"DEPM 3500",
+		"courseTerm":"Summer",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPM 2350"},
+			{"prerequisiteName":"DEPM 2502"}
+		],
+		"requiredBy":[
+			{"requiredName":"DEPM 3280"},
+			{"requiredName":"DEPM 4400"},
+			{"requiredName":"DEPM 4550"},
+			{"requiredName":"DEPM 4560"},
+			{"requiredName":"DEPM 4580"}
+		],
+		"clicked":"false"
+		},
+	{
+		"courseName":"DEPM 4400",
+		"courseTerm":"Winter",
+		"taken":"false",
+		"prerequisites":[
+			{"prerequisiteName":"DEPM 3500"}
+		],
+		"requiredBy":[],
 		"clicked":"false"
 		}
 	]
